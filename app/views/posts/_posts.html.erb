@@ -1,11 +1,10 @@
 <ul class="list-unstyled">
   <% posts.each do |post| %>
     <li class="media mb-3">
-    <!--観光地の写真を表示したい-->
-      <img class="mr-2 rounded" src="<%= gravatar_url(post.user, { size: 50 }) %>" alt="">
+      <%= image_tag post.image_url.url, :size =>'200x200' %>
       <div class="media-body">
         <div>
-          投稿者:<%= link_to post.user.name, user_path(post.user) %> / 国籍：<%= post.country %>
+          投稿者:<%= link_to post.user.name, user_path(post.user) %> / 国籍：<%= post.user.country %>
           <p><span class="text-muted">posted at <%= post.created_at %></span></p>
         </div>
         <div>
@@ -16,8 +15,15 @@
         </div>
       </div>
       <% if current_user == post.user %>
-            <%= link_to "Delete", root_path, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+            <%= link_to "Delete", post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
       <% end %>
+      <!-- 下記でFavoritesControllerのcreateアクションにとぶ -->
+          <% if current_user.favorite? post %>
+            <%= link_to "Unfavorite", favorite_path(Favorite.find_by(user: current_user, post: post),post_id: post.id), method: :delete, class: "btn btn-danger btn-sm" %>
+          <% else %>
+            <!-- いいねしていないときには、Favoriteボタンを表示する -->
+            <%= link_to "Favorite", favorites_path(post_id: post.id), method: :post, class: "btn btn-primary btn-sm" %>
+          <% end %>
     </li>
   <% end %>
   <%= paginate posts %>

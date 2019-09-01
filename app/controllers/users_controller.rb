@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:index, :show]
+  before_action :require_user_logged_in, only: [:index, :edit, :update, :show, :destroy, :likes ]
   
   def index
     @users = User.order(id: :desc).page(params[:page]).per(25)
+    @user =User.find(session[:user_id])
   end
 
   def show
@@ -47,6 +48,13 @@ class UsersController < ApplicationController
     @user.destroy
     flash[:success] = 'User は正常に削除されました'
     redirect_back(fallback_location: root_url)
+  end
+  
+  #お気に入り投稿取得
+  def likes
+    @user = User.find(params[:id])
+    @favorites = @user.favorite_posts.page(params[:page])
+    counts(@user)
   end
 
   private

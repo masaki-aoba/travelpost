@@ -7,11 +7,11 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   
-  has_many :posts
+  has_many :posts, dependent: :destroy
   # Favoriteクラスのインスタンスを返す
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
   # Postクラスのインスタンスを返す
-  has_many :favorite_posts, through: :favorites, source: :post
+  has_many :favorite_posts, through: :favorites, source: :post, dependent: :destroy
   
   #お気に入り登録
   def favorite(post)

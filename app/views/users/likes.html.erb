@@ -2,8 +2,7 @@
   <aside class="col-sm-4">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><%= @user.name %></h3>
-        <% if current_user == @user %>
+        <h3 class="card-title"><%= @user.name %></h3><% if current_user == @user %>
           <%= link_to 'このUserの情報を編集する', edit_user_path(@user) %>
           <%= link_to '退会する', @user, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
         <% end %>
@@ -15,10 +14,12 @@
   </aside>
   <div class="col-sm-8">
     <ul class="nav nav-tabs nav-justified mb-3">
-      <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">Travelposts  <span class="badge badge-secondary"><%= @count_posts %></span></a></li>
+      <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">Microposts  <span class="badge badge-secondary"><%= @count_microposts %></span></a></li>
       <li class="nav-item"><a href="<%= likes_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>">Favorites  <span class="badge badge-secondary"><%= @count_likes %></span></a></li>
+      
+      
     </ul>
-    <span class="text-center"><%= render 'posts/posts', posts: @posts %></span>
+   <span class="text-center"><%= render 'posts/posts', posts: @favorites %></span>
+
   </div>
 </div>
-

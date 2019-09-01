@@ -19,11 +19,10 @@
   <%= f.text_field :content %>
   
   <%= f.label :evaluation, 'evaluation' %>
-  <%= f.number_field :evaluation,min:1,max:5,step:3 %>
+  <%= f.number_field :evaluation,min:1,max:5 %>
 
-  <!-- 画像を入れる
   <%= f.label :image_url, 'image' %>
-  <%= f.number_field :evaluation,min:1,max:5,step:3 %> -->
+  <%= image_tag post.image_url.url, :size =>'200x200' %>
   
   
   <%= f.submit '投稿' %>

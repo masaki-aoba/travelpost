@@ -4,7 +4,8 @@
 <p>country_spot: <%= @post.country_spot %></p>
 <p>content: <%= @post.content %></p>
 <p>evaluation: <%= @post.evaluation %></p>
-<p>image: <%= @post.image_url %></p>
+<p>image: <%= image_tag @post.image_url.url %></p>
+
 
 
 <%= link_to '一覧に戻る', root_url %>
