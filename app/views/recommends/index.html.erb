@@ -1,0 +1,18 @@
+<div class="cente jumbotron">
+    <div class="text-center">
+      <h1>おすすめ観光地情報</h1>
+    </div>
+</div>
+<div class="text-center">
+  <% @averages.each do |average| %>
+    <p>sightseeing:<%= average[0] %> country:<%= average[2] %></p>
+    <p>average of evaluation:<%= average[1] %></p>
+    
+    <% @comment.each do |comment| %>
+      <% if comment[0].equal?(average[0])%>
+        <p>content:<%= comment[1] %>　evaluation:<%= comment[2] %></p>
+      <% end %>
+    <% end %>
+    <br>
+  <% end %>
+</div>

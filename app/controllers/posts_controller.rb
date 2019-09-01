@@ -48,6 +48,9 @@ class PostsController < ApplicationController
     redirect_back(fallback_location: root_url)
   end
   
+  
+
+  
   private
   # Strong Parameter
   def post_params
