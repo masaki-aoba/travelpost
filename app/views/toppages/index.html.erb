@@ -1,5 +1,12 @@
 <% if logged_in? %>
-  <p>ログイン完了ユーザ: <%= current_user.name %></p>
+  <div class="cente jumbotron">
+    <div class="text-center">
+      <h1>観光地口コミ情報</h1>
+    </div>
+  </div>
+  <div class="text-center">
+    <%= render 'posts/posts', posts: @posts %>
+  </div>
 <% else %>
   <div class="center jumbotron">
     <div class="text-center">
