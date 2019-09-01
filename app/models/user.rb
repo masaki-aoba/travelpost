@@ -8,4 +8,23 @@ class User < ApplicationRecord
   has_secure_password
   
   has_many :posts
+  # Favoriteクラスのインスタンスを返す
+  has_many :favorites
+  # Postクラスのインスタンスを返す
+  has_many :favorite_posts, through: :favorites, source: :post
+  
+  #お気に入り登録
+  def favorite(post)
+      self.favorites.find_or_create_by(post_id: post.id)
+  end
+  #お気に入り削除
+  def unfavorite(post)
+    favorite = self.favorites.find_by(post_id: post.id)
+    favorite.destroy if favorite
+  end
+  #お気に入り判断
+  def favorite?(post)
+    self.favorite_posts.include? post
+  end
+  
 end

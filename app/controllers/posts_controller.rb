@@ -14,7 +14,7 @@ class PostsController < ApplicationController
   end
   
   def new
-    @post = post.new
+    @post = Post.new
   end
   
   def create
@@ -60,7 +60,7 @@ class PostsController < ApplicationController
     end
   end
   def ensure_correct_user
-    @post = post.find_by(id: params[:id])
+    @post = Post.find_by(id: params[:id])
     # 攻撃者に余計な情報は与えない
     if @post.nil? || @post.user != current_user
       flash[:notice] = "権限がありません。"

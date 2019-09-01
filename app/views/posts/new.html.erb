@@ -1,0 +1,26 @@
+<h1>TravelPost新規作成ページ</h1>
+
+<%= form_with(model: @post, local: true) do |f| %>
+<%= render 'layouts/error_messages', model: f.object %>
+
+
+  <%= f.label :sightseeing, 'sightseeing' %>
+  <%= f.text_field :sightseeing %>
+  
+  <%= f.label :country_spot, 'country_spot' %>
+  <%= f.text_field :country_spot %>
+  
+  <%= f.label :content, 'content' %>
+  <%= f.text_field :content %>
+  
+  <%= f.label :evaluation, 'evaluation' %>
+  <%= f.number_field :evaluation,min:1,max:5,step:3 %>
+
+  <!-- 画像を入れる
+  <%= f.label :image_url, 'image' %>
+  <%= f.number_field :evaluation,min:1,max:5,step:3 %> -->
+
+  <%= f.submit '投稿' %>
+<% end %>
+
+<%= link_to '一覧に戻る', root_url %>

@@ -1,0 +1,14 @@
+<h1>id: <%= @post.id %> のタスク詳細ページ</h1>
+
+<p>sightseeing: <%= @post.sightseeing %></p>
+<p>country_spot: <%= @post.country_spot %></p>
+<p>content: <%= @post.content %></p>
+<p>evaluation: <%= @post.evaluation %></p>
+<p>image: <%= @post.image_url %></p>
+
+
+<%= link_to '一覧に戻る', root_url %>
+<% if current_user == @post.user %>
+  <%= link_to 'この投稿を編集する', edit_post_path(@post), class: 'btn btn-success btn-sm' %>
+  <%= link_to "Delete", root_path, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+<% end %>

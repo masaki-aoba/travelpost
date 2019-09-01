@@ -9,6 +9,7 @@
           <p><span class="text-muted">posted at <%= post.created_at %></span></p>
         </div>
         <div>
+          <p><%= link_to post.id, post %></p>
           <p>観光地名称:<%= post.sightseeing %> / 国:<%= post.country_spot %></p>
           <p><%= post.content %></p>
           <p>評価:<%= post.evaluation %></p>
