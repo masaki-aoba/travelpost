@@ -18,6 +18,7 @@
 
   <%= f.label :image_url, 'image' %>
   <%= f.file_field :image_url %>
+  <%= f.hidden_field :image_url_cache %>
 
   <%= f.submit '投稿' %>
 <% end %>

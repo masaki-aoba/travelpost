@@ -54,7 +54,7 @@ class PostsController < ApplicationController
   private
   # Strong Parameter
   def post_params
-    params.require(:post).permit(:sightseeing, :country_spot, :content, :evaluation, :image_url)
+    params.require(:post).permit(:sightseeing, :country_spot, :content, :evaluation, :image_url, :image_url_cache)
   end
   
   def correct_user
